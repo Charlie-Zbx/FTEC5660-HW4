@@ -1,0 +1,23 @@
+{
+  "variant": "V5",
+  "description": "V4 + normalized evidence coverage and row-label ranking",
+  "mode": "full",
+  "table_score": 1.0,
+  "document_pass": 1.0,
+  "chunks": 4308,
+  "valid_nonempty": 1.0,
+  "parse_score": 1.0,
+  "recall": 1.0,
+  "kept": 1.0,
+  "rejected": 0.7142857142857143,
+  "accuracy": 1.0,
+  "retrieval_errors": 0,
+  "generator_errors": 0,
+  "seconds": 12.59372610002174,
+  "index_seconds": 1.8044538000249304,
+  "retrieval_seconds": 2.0637922999740113,
+  "generator_tokens_in": 29466,
+  "generator_tokens_out": 182,
+  "hw4_sha256": "fa648569fb445c13d55de10177c573bd5b4bd9411c5677b681b657057e757408",
+  "evaluator_sha256": "54775f23470cf96902ee6560d7e39f04a14fb50544bca0d69f4b7d690fb0cd29"
+}

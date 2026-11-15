@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-15",
+  "dataset": "public_test",
+  "questions": 60,
+  "correct": 60,
+  "accuracy": 1.0,
+  "points": 75.0,
+  "maximum_automatic_points": 75,
+  "seconds": 7.8,
+  "student_usage": {
+    "llm_calls": 0,
+    "llm_input_tokens": 0,
+    "llm_output_tokens": 0,
+    "cost_usd": 0.0
+  },
+  "generator_usage": {
+    "llm_calls": 46,
+    "llm_input_tokens": 21584,
+    "llm_output_tokens": 169,
+    "cost_usd": 0.0033
+  },
+  "hw4_sha256": "56e34215c68354007ef9bb3bec3221571c7fcb35408aedfdea9edb340ce67975",
+  "results_sha256": "294eccdd2e44de258db40e06dca0f5c517ce2a79854cc878ee0eabb225202c96",
+  "clean_check_passed": true,
+  "note": "Public-set result only; Tasks 5 and 6 and private-set performance are not assigned scores here."
+}

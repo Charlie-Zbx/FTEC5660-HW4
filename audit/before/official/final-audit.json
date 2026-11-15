@@ -1,0 +1,12 @@
+{
+  "source_sha256": "56e34215c68354007ef9bb3bec3221571c7fcb35408aedfdea9edb340ce67975",
+  "credential_scan_files": 88,
+  "credential_leaks": [],
+  "report_metrics_verified": true,
+  "provided_code_unchanged": true,
+  "full_variant_count": 8,
+  "each_variant_questions": 60,
+  "regression_tests_passed": 9,
+  "clean_run_correct": 60,
+  "commit_or_push_performed": false
+}

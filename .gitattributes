@@ -1,0 +1,9 @@
+# Preserve byte hashes recorded by the evaluation and audit tools.
+# Do not normalize source/evidence line endings during staging or checkout.
+hw4.py -text
+evaluate.py -text
+update_report.py -text
+REFLECTION.md -text
+results.csv -text
+experiments/** -text
+audit/** -text

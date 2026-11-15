@@ -1,0 +1,23 @@
+{
+  "variant": "B0",
+  "description": "Naive text + recursive splitter + whitespace BM25 top-5",
+  "mode": "full",
+  "table_score": 1.0,
+  "document_pass": 1.0,
+  "chunks": 413,
+  "valid_nonempty": 1.0,
+  "parse_score": 0.0,
+  "recall": 0.1956521739130435,
+  "kept": 1.0,
+  "rejected": 0.0,
+  "accuracy": 0.4,
+  "retrieval_errors": 0,
+  "generator_errors": 0,
+  "seconds": 13.882122499984689,
+  "index_seconds": 0.7071102999907453,
+  "retrieval_seconds": 0.13561560001107864,
+  "generator_tokens_in": 77811,
+  "generator_tokens_out": 179,
+  "hw4_sha256": "56e34215c68354007ef9bb3bec3221571c7fcb35408aedfdea9edb340ce67975",
+  "evaluator_sha256": "54775f23470cf96902ee6560d7e39f04a14fb50544bca0d69f4b7d690fb0cd29"
+}

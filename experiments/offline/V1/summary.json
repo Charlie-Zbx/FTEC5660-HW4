@@ -1,0 +1,23 @@
+{
+  "variant": "V1",
+  "description": "B0 + table_to_text",
+  "mode": "offline",
+  "table_score": 1.0,
+  "document_pass": 1.0,
+  "chunks": 446,
+  "valid_nonempty": 1.0,
+  "parse_score": 0.0,
+  "recall": 0.21739130434782608,
+  "kept": 1.0,
+  "rejected": 0.0,
+  "accuracy": null,
+  "retrieval_errors": 0,
+  "generator_errors": 0,
+  "seconds": 1.6733344999956898,
+  "index_seconds": 1.484197599987965,
+  "retrieval_seconds": 0.1144450000138022,
+  "generator_tokens_in": 0,
+  "generator_tokens_out": 0,
+  "hw4_sha256": "fa648569fb445c13d55de10177c573bd5b4bd9411c5677b681b657057e757408",
+  "evaluator_sha256": "54775f23470cf96902ee6560d7e39f04a14fb50544bca0d69f4b7d690fb0cd29"
+}

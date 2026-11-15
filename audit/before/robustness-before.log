@@ -1,0 +1,137 @@
+test_company_name_containing_and (test_robustness.Robustness.test_company_name_containing_and) ... FAIL
+test_comparisons_without_colon (test_robustness.Robustness.test_comparisons_without_colon) ... 
+  test_comparisons_without_colon (test_robustness.Robustness.test_comparisons_without_colon) (q='Between Juniper Devices and Juniper Payments, which company held more cash in FY2024?') ... FAIL
+  test_comparisons_without_colon (test_robustness.Robustness.test_comparisons_without_colon) (q='Which company held more cash in FY2024, Juniper Devices or Juniper Payments?') ... FAIL
+test_explicit_nondisclosure (test_robustness.Robustness.test_explicit_nondisclosure) ... 
+  test_explicit_nondisclosure (test_robustness.Robustness.test_explicit_nondisclosure) (metric='lobbying expenses') ... FAIL
+  test_explicit_nondisclosure (test_robustness.Robustness.test_explicit_nondisclosure) (metric='customer churn rate') ... FAIL
+test_filename_order_and_second_corpus (test_robustness.Robustness.test_filename_order_and_second_corpus) ... ok
+test_forecast_and_personnel (test_robustness.Robustness.test_forecast_and_personnel) ... ok
+test_possessive_company_spellings (test_robustness.Robustness.test_possessive_company_spellings) ... ok
+test_simple_paraphrases (test_robustness.Robustness.test_simple_paraphrases) ... 
+  test_simple_paraphrases (test_robustness.Robustness.test_simple_paraphrases) (q='What is the headcount of Juniper Devices in FY2025?') ... FAIL
+  test_simple_paraphrases (test_robustness.Robustness.test_simple_paraphrases) (q='How many employees did Juniper Devices have at 31 December 2025?') ... FAIL
+  test_simple_paraphrases (test_robustness.Robustness.test_simple_paraphrases) (q='What was the revenue of Juniper Devices in FY2025?') ... FAIL
+test_source_provenance_and_no_models (test_robustness.Robustness.test_source_provenance_and_no_models) ... ok
+test_symbols_blank_cell_and_rowspan (test_robustness.Robustness.test_symbols_blank_cell_and_rowspan) ... ok
+test_unknown_names_and_years (test_robustness.Robustness.test_unknown_names_and_years) ... ok
+
+======================================================================
+FAIL: test_company_name_containing_and (test_robustness.Robustness.test_company_name_containing_and)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "G:\codex\2026-11-15\new-chat\work\hw4-audit-before\test_robustness.py", line 90, in test_company_name_containing_and
+    self.assertEqual(h.parse_query(q)['companies'],['Juniper and Sons','Maple Devices'])
+AssertionError: Lists differ: ['Juniper', 'Sons', 'Maple Devices'] != ['Juniper and Sons', 'Maple Devices']
+
+First differing element 0:
+'Juniper'
+'Juniper and Sons'
+
+First list contains 1 additional elements.
+First extra element 2:
+'Maple Devices'
+
+- ['Juniper', 'Sons', 'Maple Devices']
+?          ^^^^
+
++ ['Juniper and Sons', 'Maple Devices']
+?          ^^^^^
+
+
+======================================================================
+FAIL: test_comparisons_without_colon (test_robustness.Robustness.test_comparisons_without_colon) (q='Between Juniper Devices and Juniper Payments, which company held more cash in FY2024?')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "G:\codex\2026-11-15\new-chat\work\hw4-audit-before\test_robustness.py", line 74, in test_comparisons_without_colon
+    self.check_question(q,{'juniper devices','juniper payments'},2024,'2024: 62.1')
+  File "G:\codex\2026-11-15\new-chat\work\hw4-audit-before\test_robustness.py", line 49, in check_question
+    self.assertEqual({h.company_key(n) for n in parsed['companies']},set(names))
+AssertionError: Items in the second set but not the first:
+'juniper payments'
+'juniper devices'
+
+======================================================================
+FAIL: test_comparisons_without_colon (test_robustness.Robustness.test_comparisons_without_colon) (q='Which company held more cash in FY2024, Juniper Devices or Juniper Payments?')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "G:\codex\2026-11-15\new-chat\work\hw4-audit-before\test_robustness.py", line 74, in test_comparisons_without_colon
+    self.check_question(q,{'juniper devices','juniper payments'},2024,'2024: 62.1')
+  File "G:\codex\2026-11-15\new-chat\work\hw4-audit-before\test_robustness.py", line 49, in check_question
+    self.assertEqual({h.company_key(n) for n in parsed['companies']},set(names))
+AssertionError: Items in the second set but not the first:
+'juniper payments'
+'juniper devices'
+
+======================================================================
+FAIL: test_explicit_nondisclosure (test_robustness.Robustness.test_explicit_nondisclosure) (metric='lobbying expenses')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "G:\codex\2026-11-15\new-chat\work\hw4-audit-before\test_robustness.py", line 80, in test_explicit_nondisclosure
+    self.assertEqual(h.retrieve(self.index,f"What were Juniper Devices' {metric} in FY2025?"),[])
+AssertionError: Lists differ: [Document(metadata={'source': 'alpha.html'[241 chars]d.')] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+Document(metadata={'source': 'alpha.html', 'company': 'Juniper Devices Inc.', 'fiscal_year': 2025, 'doc_type': 'annual_report', 'section': 'Disclosures', 'is_table': False, 'row_label': ''}, page_content='Juniper Devices Inc. | 2025 | Disclosures\nLobbying expenses are not disclosed.')
+
+- [Document(metadata={'source': 'alpha.html', 'company': 'Juniper Devices Inc.', 'fiscal_year': 2025, 'doc_type': 'annual_report', 'section': 'Disclosures', 'is_table': False, 'row_label': ''}, page_content='Juniper Devices Inc. | 2025 | Disclosures\nLobbying expenses are not disclosed.')]
++ []
+
+======================================================================
+FAIL: test_explicit_nondisclosure (test_robustness.Robustness.test_explicit_nondisclosure) (metric='customer churn rate')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "G:\codex\2026-11-15\new-chat\work\hw4-audit-before\test_robustness.py", line 80, in test_explicit_nondisclosure
+    self.assertEqual(h.retrieve(self.index,f"What were Juniper Devices' {metric} in FY2025?"),[])
+AssertionError: Lists differ: [Document(metadata={'source': 'alpha.html'[241 chars]d.')] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+Document(metadata={'source': 'alpha.html', 'company': 'Juniper Devices Inc.', 'fiscal_year': 2025, 'doc_type': 'annual_report', 'section': 'Disclosures', 'is_table': False, 'row_label': ''}, page_content='Juniper Devices Inc. | 2025 | Disclosures\nCustomer churn rate is not reported.')
+
+- [Document(metadata={'source': 'alpha.html', 'company': 'Juniper Devices Inc.', 'fiscal_year': 2025, 'doc_type': 'annual_report', 'section': 'Disclosures', 'is_table': False, 'row_label': ''}, page_content='Juniper Devices Inc. | 2025 | Disclosures\nCustomer churn rate is not reported.')]
++ []
+
+======================================================================
+FAIL: test_simple_paraphrases (test_robustness.Robustness.test_simple_paraphrases) (q='What is the headcount of Juniper Devices in FY2025?')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "G:\codex\2026-11-15\new-chat\work\hw4-audit-before\test_robustness.py", line 68, in test_simple_paraphrases
+    with self.subTest(q=q):self.check_question(q,{'juniper devices'},2025,fact)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "G:\codex\2026-11-15\new-chat\work\hw4-audit-before\test_robustness.py", line 49, in check_question
+    self.assertEqual({h.company_key(n) for n in parsed['companies']},set(names))
+AssertionError: Items in the second set but not the first:
+'juniper devices'
+
+======================================================================
+FAIL: test_simple_paraphrases (test_robustness.Robustness.test_simple_paraphrases) (q='How many employees did Juniper Devices have at 31 December 2025?')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "G:\codex\2026-11-15\new-chat\work\hw4-audit-before\test_robustness.py", line 68, in test_simple_paraphrases
+    with self.subTest(q=q):self.check_question(q,{'juniper devices'},2025,fact)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "G:\codex\2026-11-15\new-chat\work\hw4-audit-before\test_robustness.py", line 49, in check_question
+    self.assertEqual({h.company_key(n) for n in parsed['companies']},set(names))
+AssertionError: Items in the second set but not the first:
+'juniper devices'
+
+======================================================================
+FAIL: test_simple_paraphrases (test_robustness.Robustness.test_simple_paraphrases) (q='What was the revenue of Juniper Devices in FY2025?')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "G:\codex\2026-11-15\new-chat\work\hw4-audit-before\test_robustness.py", line 68, in test_simple_paraphrases
+    with self.subTest(q=q):self.check_question(q,{'juniper devices'},2025,fact)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "G:\codex\2026-11-15\new-chat\work\hw4-audit-before\test_robustness.py", line 49, in check_question
+    self.assertEqual({h.company_key(n) for n in parsed['companies']},set(names))
+AssertionError: Items in the first set but not the second:
+'the'
+Items in the second set but not the first:
+'juniper devices'
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.104s
+
+FAILED (failures=8)

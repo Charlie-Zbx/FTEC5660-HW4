@@ -1,0 +1,12 @@
+{
+  "fresh_dependencies_from_requirements": true,
+  "fresh_remote_clone": true,
+  "candidate_overlay": true,
+  "tests_passed": 19,
+  "correct": 60,
+  "questions": 60,
+  "source_matches": true,
+  "no_env_copied": true,
+  "python": "G:\\codex\\2026-11-15\\new-chat\\work\\hw4-audit-env\\Scripts\\python.exe",
+  "source_sha256": "fa648569fb445c13d55de10177c573bd5b4bd9411c5677b681b657057e757408"
+}

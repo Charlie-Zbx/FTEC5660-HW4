@@ -1,0 +1,23 @@
+{
+  "variant": "V2H",
+  "description": "V2 + source-derived contextual headers",
+  "mode": "full",
+  "table_score": 1.0,
+  "document_pass": 1.0,
+  "chunks": 4308,
+  "valid_nonempty": 1.0,
+  "parse_score": 0.0,
+  "recall": 0.45652173913043476,
+  "kept": 1.0,
+  "rejected": 0.0,
+  "accuracy": 0.6166666666666667,
+  "retrieval_errors": 0,
+  "generator_errors": 0,
+  "seconds": 15.444906199991237,
+  "index_seconds": 1.7828455999842845,
+  "retrieval_seconds": 0.9605515000002924,
+  "generator_tokens_in": 36280,
+  "generator_tokens_out": 181,
+  "hw4_sha256": "56e34215c68354007ef9bb3bec3221571c7fcb35408aedfdea9edb340ce67975",
+  "evaluator_sha256": "54775f23470cf96902ee6560d7e39f04a14fb50544bca0d69f4b7d690fb0cd29"
+}

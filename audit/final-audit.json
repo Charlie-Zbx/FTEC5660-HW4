@@ -1,0 +1,13 @@
+{
+  "source_sha256": "fa648569fb445c13d55de10177c573bd5b4bd9411c5677b681b657057e757408",
+  "provided_code_unchanged": true,
+  "candidate_files_scanned": 164,
+  "credential_leaks": [],
+  "staged_files": [],
+  "reflection_unchanged": true,
+  "official_accuracy": 1.0,
+  "official_points": 75,
+  "regression_tests": 19,
+  "fresh_install_clean_verification": true,
+  "commit_or_push_performed": false
+}

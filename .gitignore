@@ -1,0 +1,25 @@
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.py[cod]
+*.pkl
+*.pickle
+.pytest_cache/
+work/
+Homework 4.pdf
+
+# Local-only review history and duplicate experiment output.
+/audit/candidate-manifest.json
+/audit/before/full/
+/audit/before/README.md
+/audit/before/test_hw4.py
+/experiments/full-run.log
+/STAGE_CHECKS.md
+/compliance.json
+.cache/
+.mypy_cache/
+.ruff_cache/
+*.faiss
+*.index

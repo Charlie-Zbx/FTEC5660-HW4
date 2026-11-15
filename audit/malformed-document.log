@@ -1,0 +1,18 @@
+2 documents, 1 questions
+19 chunks to index
+Index built in 0.0s | {'llm_calls': 0, 'llm_input_tokens': 0, 'llm_output_tokens': 0, 'cost_usd': 0.0}
+Wrote G:\codex\2026-11-15\new-chat\work\hw4-audit-malformed\results.csv
+
+Your usage: {'llm_calls': 0, 'llm_input_tokens': 0, 'llm_output_tokens': 0, 'cost_usd': 0.0}
+Generator usage: {'llm_calls': 0, 'llm_input_tokens': 0, 'llm_output_tokens': 0, 'cost_usd': 0.0}
+Time: 0.0s (index 0.0s, retrieval 0.0s)
+Traceback (most recent call last):
+  File "G:\codex\2026-11-15\new-chat\work\hw4-audit-candidate\hw4.py", line 674, in main
+    chunks_by_file[file_name] = list(chunk_document(file_name, html) or [])
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "G:\codex\2026-11-15\new-chat\work\hw4-audit-candidate\hw4.py", line 267, in chunk_document
+    meta = _metadata(file_name, soup)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "G:\codex\2026-11-15\new-chat\work\hw4-audit-candidate\hw4.py", line 48, in _metadata
+    raise ValueError(f"Missing company heading: {file_name}")
+ValueError: Missing company heading: bad.html

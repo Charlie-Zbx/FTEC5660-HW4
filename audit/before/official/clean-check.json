@@ -1,0 +1,9 @@
+{
+  "exit_code": 0,
+  "questions": 60,
+  "correct": 60,
+  "source_matches": true,
+  "no_env_copied": true,
+  "implementation_sha256": "56e34215c68354007ef9bb3bec3221571c7fcb35408aedfdea9edb340ce67975",
+  "note": "Fresh remote clone overlaid with uncommitted candidate files; existing installed Python environment reused, no index copied; credential inherited in process environment."
+}

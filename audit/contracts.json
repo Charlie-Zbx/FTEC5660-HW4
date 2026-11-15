@@ -1,0 +1,13 @@
+{
+  "source_provenance_violations": [],
+  "max_chunk_characters": 497,
+  "max_table_line_characters": 105,
+  "chunks": 4308,
+  "document_passes": 40,
+  "public_tables": 12,
+  "provided_matches_fresh_upstream": true,
+  "forbidden_runtime_calls": [],
+  "reflection_unchanged": true,
+  "reflection_sha256": "efb54d1a08999e4c0467ea4f939e7c6d90107a1573dad4fce3ba24ed960deefa",
+  "source_sha256": "fa648569fb445c13d55de10177c573bd5b4bd9411c5677b681b657057e757408"
+}

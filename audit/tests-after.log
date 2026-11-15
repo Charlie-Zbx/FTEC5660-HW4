@@ -1,0 +1,24 @@
+test_abstention_and_corpus_isolation (test_hw4.Contracts.test_abstention_and_corpus_isolation) ... ok
+test_empty_index_and_bad_document (test_hw4.Contracts.test_empty_index_and_bad_document) ... ok
+test_headquarters_no_year_and_long_paragraph (test_hw4.Contracts.test_headquarters_no_year_and_long_paragraph) ... ok
+test_multilevel_headers_and_sections (test_hw4.Contracts.test_multilevel_headers_and_sections) ... ok
+test_no_model_during_parsing_and_preserve_numbers (test_hw4.Contracts.test_no_model_during_parsing_and_preserve_numbers) ... ok
+test_prior_year_and_comparison (test_hw4.Contracts.test_prior_year_and_comparison) ... ok
+test_quarter_and_quantity_words_do_not_cause_false_rejection (test_hw4.Contracts.test_quarter_and_quantity_words_do_not_cause_false_rejection) ... ok
+test_query_entities_case_and_unknown_names (test_hw4.Contracts.test_query_entities_case_and_unknown_names) ... ok
+test_student_code_does_not_read_labels_or_create_clients (test_hw4.Contracts.test_student_code_does_not_read_labels_or_create_clients) ... ok
+test_company_name_containing_and (test_robustness.Robustness.test_company_name_containing_and) ... ok
+test_comparisons_without_colon (test_robustness.Robustness.test_comparisons_without_colon) ... ok
+test_explicit_nondisclosure (test_robustness.Robustness.test_explicit_nondisclosure) ... ok
+test_filename_order_and_second_corpus (test_robustness.Robustness.test_filename_order_and_second_corpus) ... ok
+test_forecast_and_personnel (test_robustness.Robustness.test_forecast_and_personnel) ... ok
+test_possessive_company_spellings (test_robustness.Robustness.test_possessive_company_spellings) ... ok
+test_simple_paraphrases (test_robustness.Robustness.test_simple_paraphrases) ... ok
+test_source_provenance_and_no_models (test_robustness.Robustness.test_source_provenance_and_no_models) ... ok
+test_symbols_blank_cell_and_rowspan (test_robustness.Robustness.test_symbols_blank_cell_and_rowspan) ... ok
+test_unknown_names_and_years (test_robustness.Robustness.test_unknown_names_and_years) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.153s
+
+OK
