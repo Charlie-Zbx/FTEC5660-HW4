@@ -4,9 +4,7 @@ Retrieval over HTML company reports for SEEM5660 Homework 4. The five student fu
 
 ## Setup and execution
 
-Use Python 3.10 or newer (development uses Python 3.12). The Windows system Python 3.9 is too old.
-
-For this local checkout, `.venv` has been prepared with the bundled Python 3.12 interpreter. Use `.\.venv\Scripts\python.exe` directly. On another machine, first select a Python 3.10+ interpreter before creating the environment. `requirements-lock.txt` records the exact development package versions; use it to reproduce that environment if needed.
+Python 3.10 or newer is required; the tested environment uses Python 3.12. The following commands create a new environment from the repository root. `requirements-lock.txt` records the package versions used for the reported experiments.
 
 ```powershell
 python -m venv .venv
@@ -15,7 +13,7 @@ python -m venv .venv
 .\.venv\Scripts\python.exe hw4.py --data-folder public_test --output results.csv
 ```
 
-On macOS/Linux use `.venv/bin/python` instead. The official command calls the supplied DeepSeek generator and incurs API charges. `.env`, virtual environments and serialized index files are ignored by Git. Never put a real key in `.env.example` or commit it elsewhere.
+On macOS/Linux, replace `.\.venv\Scripts\python.exe` with `.venv/bin/python`. The official run requires `DEEPSEEK_API_KEY` in the environment or a local `.env` file and makes billable calls to the supplied DeepSeek generator. `.env.example` contains a placeholder; credentials, virtual environments and serialized indexes are excluded by `.gitignore`. The index is rebuilt from the input corpus on each run.
 
 ```powershell
 # No model calls: contracts, public-data retrieval, and all ablations
@@ -33,9 +31,9 @@ On macOS/Linux use `.venv/bin/python` instead. The official command calls the su
 
 ### Official evaluation and reproducibility
 
-The post-audit candidate answers **60/60 public questions correctly**, scoring **75/75 automatic points** (Tasks 1--4). The official run takes **8.5 seconds** including index construction and generation. The pre-audit baseline was also 75/75 and took 7.8 seconds; this audit improves tested robustness rather than the already-saturated public score. Student LLM usage is zero. The supplied generator makes 46 calls with 21,584 input and 166 output tokens; estimated cost is USD 0.0033 using the provided runner's constants, not a verified bill.
+The final implementation answers **60/60 public questions correctly**, scoring **75/75 automatic points** (Tasks 1--4). The official run takes **8.5 seconds**, including index construction and generation. The implementation before the robustness fixes also scored 75/75 and took 7.8 seconds; the fixes address failures in independent test cases without changing the public score. The student functions make no LLM calls. The supplied generator makes 46 calls with 21,584 input and 166 output tokens; estimated cost is USD 0.0033 using the provided runner's constants.
 
-A fresh remote clone with the candidate files overlaid and a **new virtual environment installed from `requirements.txt`** also answers 60/60 correctly in 9.2 seconds. All 19 regression/robustness tests pass in that environment. No index or credential file was copied; the API key was supplied through the child process environment. The technical audit was completed before the final reflection revision. See `AUDIT_REPORT.md`, `audit/clean-check.json`, `audit/install.log`, `experiments/official/run.log` and root `results.csv` for evidence. The pre-audit baseline is preserved under `audit/before/`. These checks cover the reviewed candidate. Public-set scores do not establish a private-set grade or TA score. See `SUBMISSION_FILES.md` for the final file layout and exclusions.
+A separate reproduction check used a fresh clone with the implementation files overlaid and a **new virtual environment installed from `requirements.txt`**. It answered 60/60 questions correctly in 9.2 seconds, and all 19 regression and robustness tests passed. No index or credential file was copied; the API key was supplied through the process environment. The evaluated `hw4.py` SHA256 is `fa648569fb445c13d55de10177c573bd5b4bd9411c5677b681b657057e757408`. Evidence is recorded in [the verification report](AUDIT_REPORT.md), `audit/clean-check.json`, `audit/install.log`, `experiments/official/run.log` and `results.csv`. The earlier implementation and its results are preserved under `audit/before/`. These results cover the public corpus and the documented tests; private-set performance has not been measured. [Repository contents](SUBMISSION_FILES.md) lists the implementation and supporting files.
 
 ### Pipeline
 
@@ -139,7 +137,7 @@ All eight configurations have actual results from the unchanged provided generat
 - **V4 to V5:** evidence-aware ranking raises accuracy to 60/60 and recall to 100%. The q016 trace shows exact gross-profit rows replacing related operating-income and gross-margin prose. This component combines term normalization, coverage and row/table/year scoring; the experiment evaluates that ranking component as a whole, not the independent contribution of each weight.
 - **V5 to V6:** accuracy remains 60/60, rather than increasing. V5's generator already returns `NOT_FOUND` for all four undisclosed-metric questions (q019, q025, q033, q039). V6 rejects those questions in retrieval, increasing the retriever's rejection rate from 71.4% to 100% and reducing questions sent to the generator from 50 to 46. Generator input tokens fall from 29,466 to 21,584 (26.7%); this includes removing low-coverage passages from answerable questions as well as skipping the four calls. The gain is earlier abstention and lower context cost, not higher observed answer accuracy.
 
-The final configuration has no answer errors on this public run. Earlier variants and the synthetic regressions provide the error cases; there is no invented final error analysis. Per-question answers, expected answers and retrieved contexts remain available in each variant's `results.csv` and `details.json`. `experiments/full/comparison.csv` includes correct counts, generator token counts and estimated costs. Repeated testing and selection on this small public development set can overestimate generalization, particularly for grammar-based parsing and the coverage threshold.
+The final configuration has no answer errors on this public run. Error analysis therefore uses failures from earlier variants and the independent synthetic tests. Per-question answers, expected answers and retrieved contexts remain available in each variant's `results.csv` and `details.json`. `experiments/full/comparison.csv` includes correct counts, generator token counts and estimated costs. Repeated testing and selection on this small public development set can overestimate generalization, particularly for grammar-based parsing and the coverage threshold.
 
 ### Limitations and error analysis
 
@@ -153,20 +151,10 @@ During development, an overly broad document-type regex matched `rating` inside 
 
 The focused tests check unknown and similarly named companies, previous-year columns, comparison evidence, casing/legal suffixes, long paragraphs, multi-level table headers, source-only results, reordered documents and two independent corpora in one process. These tests use invented source documents, never private data. They verify the listed cases rather than claiming universal robustness.
 
-### Submission audit changes
+### Robustness tests and fixes
 
 The independent fixtures in `test_robustness.py` exposed eight failed assertions across four of ten new test methods in the pre-audit implementation. All ten methods now pass, alongside the nine existing tests. Repairs are limited to grammar-based extraction for metric-of-company questions, employee-count paraphrases and comparisons without a colon; preserving an internal `and` when comparison names use `or`; rejecting explicit nondisclosure clauses for the requested metric; and returning the reserved evidence in relevance order. No public company, question ID or answer was added to the retrieval implementation. The synthetic documents are used only by tests. Ambiguous names, unseen English constructions and nuanced negation remain limitations; these tests are not a proof of unrestricted natural-language understanding.
 
 ### Task 6: Reflection
 
 See [the reflection](REFLECTION.md).
-
-## Submission checklist
-
-- [x] Run the unchanged official runner and inspect all 60 rows of `results.csv`.
-- [x] Run all eight full ablations and verify their code/configuration hashes and actual results.
-- Confirm that the reflection represents your own views before submission.
-- Check `git diff`, `git status --short` and `git check-ignore .env`; never commit credentials or an index.
-- [x] Run the official evaluation on a clean candidate copy with installed dependencies and no prebuilt index.
-- Keep the GitHub repository public during grading and submit its link on Blackboard.
-- The handout deadline is 1 December, 23:59 HKT; the handout does not specify a year.
