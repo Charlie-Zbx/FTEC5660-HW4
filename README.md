@@ -35,7 +35,7 @@ On macOS/Linux use `.venv/bin/python` instead. The official command calls the su
 
 The post-audit candidate answers **60/60 public questions correctly**, scoring **75/75 automatic points** (Tasks 1--4). The official run takes **8.5 seconds** including index construction and generation. The pre-audit baseline was also 75/75 and took 7.8 seconds; this audit improves tested robustness rather than the already-saturated public score. Student LLM usage is zero. The supplied generator makes 46 calls with 21,584 input and 166 output tokens; estimated cost is USD 0.0033 using the provided runner's constants, not a verified bill.
 
-A fresh remote clone with the candidate files overlaid and a **new virtual environment installed from `requirements.txt`** also answers 60/60 correctly in 9.2 seconds. All 19 regression/robustness tests pass in that environment. No index or credential file was copied; the API key was supplied through the child process environment. The original reflection is unchanged. See `AUDIT_REPORT.md`, `audit/clean-check.json`, `audit/install.log`, `experiments/official/run.log` and root `results.csv` for evidence. The pre-audit baseline is preserved under `audit/before/`. These checks cover the reviewed candidate. Public-set scores do not establish a private-set grade or TA score. See `SUBMISSION_FILES.md` for the final file layout and exclusions.
+A fresh remote clone with the candidate files overlaid and a **new virtual environment installed from `requirements.txt`** also answers 60/60 correctly in 9.2 seconds. All 19 regression/robustness tests pass in that environment. No index or credential file was copied; the API key was supplied through the child process environment. The technical audit was completed before the final reflection revision. See `AUDIT_REPORT.md`, `audit/clean-check.json`, `audit/install.log`, `experiments/official/run.log` and root `results.csv` for evidence. The pre-audit baseline is preserved under `audit/before/`. These checks cover the reviewed candidate. Public-set scores do not establish a private-set grade or TA score. See `SUBMISSION_FILES.md` for the final file layout and exclusions.
 
 ### Pipeline
 
@@ -159,13 +159,13 @@ The independent fixtures in `test_robustness.py` exposed eight failed assertions
 
 ### Task 6: Reflection
 
-See [the reflection](REFLECTION.md), preserved in its current AI-assisted draft form.
+See [the reflection](REFLECTION.md).
 
 ## Submission checklist
 
 - [x] Run the unchanged official runner and inspect all 60 rows of `results.csv`.
 - [x] Run all eight full ablations and verify their code/configuration hashes and actual results.
-- Review the reflection draft and replace statements that do not represent your own views.
+- Confirm that the reflection represents your own views before submission.
 - Check `git diff`, `git status --short` and `git check-ignore .env`; never commit credentials or an index.
 - [x] Run the official evaluation on a clean candidate copy with installed dependencies and no prebuilt index.
 - Keep the GitHub repository public during grading and submit its link on Blackboard.

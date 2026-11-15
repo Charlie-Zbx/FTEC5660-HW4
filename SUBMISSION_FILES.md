@@ -8,7 +8,7 @@ The repository is the submission; no local virtual environment or prebuilt index
 - `requirements.txt`: installation dependencies; `requirements-lock.txt` records the tested versions.
 - `evaluate.py` and `update_report.py`: reproducible ablations and report refresh.
 - `README.md`: Homework 4 solution, pipeline, measured ablations and error analysis.
-- `REFLECTION.md`: Task 6, preserved in the student's currently selected AI-assisted draft form.
+- `REFLECTION.md`: Task 6, personal reflection.
 - `public_test/`: the original public data supplied with the starter repository.
 
 ## Results and verification evidence
